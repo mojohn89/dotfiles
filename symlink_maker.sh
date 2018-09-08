@@ -6,15 +6,17 @@
 
 dir=~/dotfiles
 backupdir=~/dotfiles_old
-files=".bashrc .zshrc .profile"
+files=".bashrc .zshrc .profile .vimrc"
 
 echo "Creating backup directory in $backupdir..."
 mkdir -p $backupdir
-echo "..tada"
+echo "Backup directory created."
+echo ""
 
 echo "Changing to new directory $dir..."
 cd $dir
-echo "..tada again?!"
+echo "Changed into new directory."
+echo "" 
 
 for file in $files; do
 	echo "Moving any existing dotfiles from ~ to $backupdir"
