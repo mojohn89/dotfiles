@@ -1,3 +1,5 @@
+set shell=/bin/bash
+
 " VIM mode
 set nocompatible
 
@@ -43,3 +45,17 @@ filetype indent on      " Enable filetype specific indenting
 filetype plugin on      " Enable filetype specific plugins
 set autoindent smartindent " auto/smart indent
 
+" Plugins
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'danilo-augusto/vim-afterglow'
+
+call vundle#end()
+
+" Set colorscheme
+colorscheme afterglow
