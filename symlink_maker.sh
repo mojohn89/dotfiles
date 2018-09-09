@@ -25,9 +25,9 @@ for file in $files; do
 	ln -s $dir/$file ~/$file
 done
 echo "---"
-vundlepath="~/.vim/bundle/Vundle.vim"
-if [ ! -d $vundlepath ]
-then 
+
+vundlepath=~/.vim/bundle/Vundle.vim
+if [ -d $vundlepath ]; then 
     echo "Vundle is installed..."
     vim +PluginInstall +qall
     echo ".. And plugins are now up to date."
