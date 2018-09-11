@@ -88,6 +88,14 @@ let wiki_4.ext = '.md'
 
 let g:vimwiki_list = [wiki_0, wiki_1, wiki_2, wiki_3, wiki_4]
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+augroup pandoc_syntax
+    au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+augroup end
+
+" PANDOC
+let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
+let g:pandoc#filetypes#pandoc_markdown=0
+let g:pandoc#modules#disabled = ["spell"]
 
 " Set colorscheme
 colorscheme afterglow
