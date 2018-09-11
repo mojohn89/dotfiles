@@ -1,5 +1,5 @@
 set shell=/bin/bash
-
+let mapleader=","
 " VIM mode
 set nocompatible
 
@@ -44,6 +44,7 @@ filetype on             " Enable filetype detection
 filetype indent on      " Enable filetype specific indenting
 filetype plugin on      " Enable filetype specific plugins
 set autoindent smartindent " auto/smart indent
+syntax on
 
 " Plugins
 
@@ -54,8 +55,39 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'danilo-augusto/vim-afterglow'
+Plugin 'vimwiki/vimwiki'
+Plugin 'gabrielelana/vim-markdown'
 
 call vundle#end()
+
+
+let wiki_0 = {}
+let wiki_0.path = '~/OneDrive/Notes/'
+let wiki_0.syntax = 'markdown'
+let wiki_0.ext = '.md'
+
+let wiki_1 = {}
+let wiki_1.path = '~/OneDrive/Notes/School/'
+let wiki_1.syntax = 'markdown'
+let wiki_1.ext = '.md'
+
+let wiki_2 = {}
+let wiki_2.path = '~/OneDrive/Notes/Personal/'
+let wiki_2.syntax = 'markdown'
+let wiki_2.ext = '.md'
+
+let wiki_3 = {}
+let wiki_3.path = '~/OneDrive/Notes/Knowledge/'
+let wiki_3.syntax = 'markdown'
+let wiki_3.ext = '.md'
+
+let wiki_4 = {}
+let wiki_4.path = '~/OneDrive/Notes/Work/'
+let wiki_4.syntax = 'markdown'
+let wiki_4.ext = '.md'
+
+let g:vimwiki_list = [wiki_0, wiki_1, wiki_2, wiki_3, wiki_4]
+let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 
 " Set colorscheme
 colorscheme afterglow
