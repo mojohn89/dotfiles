@@ -56,7 +56,7 @@ Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'danilo-augusto/vim-afterglow'
 Plugin 'vimwiki/vimwiki'
-Plugin 'gabrielelana/vim-markdown'
+"Plugin 'gabrielelana/vim-markdown'
 
 call vundle#end()
 
