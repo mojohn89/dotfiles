@@ -57,6 +57,7 @@ Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'danilo-augusto/vim-afterglow'
 Plugin 'vimwiki/vimwiki'
 "Plugin 'gabrielelana/vim-markdown'
+Plugin 'altercation/vim-colors-solarized'
 
 call vundle#end()
 
@@ -98,4 +99,8 @@ let g:pandoc#filetypes#pandoc_markdown=0
 let g:pandoc#modules#disabled = ["spell"]
 
 " Set colorscheme
-colorscheme afterglow
+let g:solarized_termcolors=256
+set t_Co=256
+set background=dark
+
+colorscheme solarized

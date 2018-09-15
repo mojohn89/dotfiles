@@ -2,30 +2,35 @@
 ###############
 # Creates symlinks from home to dotfiles folder
 ###############
-
-
+echo ""
+echo "---------------------------"
+echo "Setting up dotfile symlinks"
+echo "---------------------------"
 dir=~/dotfiles
-backupdir=~/dotfiles_old
+backupdir=~/dotfiles_old9
 files=".bashrc .zshrc .profile .vimrc"
 
+
 echo "Creating backup directory in $backupdir..."
-mkdir -p $backupdir
-echo "Backup directory created."
-echo "---"
+if [[ ! -e $backupdir ]]; then
+    mkdir -p $backupdir
+    echo "... Backup directory created"
+fi
 
-echo "Changing to new directory $dir..."
+echo "Changing to dotfiles directory $dir..."
 cd $dir
-echo "Changed into new directory."
-echo "---" 
 
-echo "Moving any existing dotfiles from ~ to $backupdir"
+echo "Moving any existing dotfile from $dir to $backupdir"
 for file in $files; do
-	mv ~/$file $backupdir
-	echo " - Creating symlink to $file in home dir..."
-	ln -s $dir/$file ~/$file
+    mv ~/$file $backupdir
+    echo " - Creating symlink to $file in home dir..."
+    ln -s $dir/$file ~/$file
 done
-echo "---"
 
+echo ""
+echo "------------------------------"
+echo "Setting up Vundle with plugins"
+echo "------------------------------"
 vundlepath=~/.vim/bundle/Vundle.vim
 if [ -d $vundlepath ]; then 
     echo "Vundle is installed..."
@@ -39,4 +44,31 @@ else
     echo ".. And plugins are now up to date."
 fi
 
+echo ""
+echo "---------------------------"
+echo "Setting up OneDrive symlink"
+echo "---------------------------"
+get_username=$(powershell.exe '$env:UserName')
+username=${get_username//$'\r'/}
+LocalOneDrive=~/OneDrive
+d1="/mnt/c/OneDrive"
+d2="/mnt/c/Users/$username/OneDrive"
+
+initializeOnedriveSymlink () {
+    if [[ ! -e $LocalOneDrive ]]; then
+        if [[ -e $d1 ]]; then
+            echo "Create symlink from $d1 to $LocalOneDrive"
+        elif [[ -e $d2 ]]; then
+            echo "Creating symlink $d2 to $LocalOneDrive"
+        else
+            echo "Couldn't find OneDrive location, check possible locations"
+        fi
+    else 
+        echo "OneDrive symlink already exists"
+    fi
+}
+
+initializeOnedriveSymlink
 source ~/.bashrc
+
+#'
