@@ -7,7 +7,7 @@ echo "---------------------------"
 echo "Setting up dotfile symlinks"
 echo "---------------------------"
 dir=~/dotfiles
-backupdir=~/dotfiles_old9
+backupdir=$dir/dotfiles_old
 files=".bashrc .zshrc .profile .vimrc"
 
 
@@ -54,21 +54,33 @@ LocalOneDrive=~/OneDrive
 d1="/mnt/c/OneDrive"
 d2="/mnt/c/Users/$username/OneDrive"
 
-initializeOnedriveSymlink () {
-    if [[ ! -e $LocalOneDrive ]]; then
-        if [[ -e $d1 ]]; then
-            echo "Create symlink from $d1 to $LocalOneDrive"
-        elif [[ -e $d2 ]]; then
-            echo "Creating symlink $d2 to $LocalOneDrive"
-        else
-            echo "Couldn't find OneDrive location, check possible locations"
-        fi
-    else 
-        echo "OneDrive symlink already exists"
+if [[ ! -e $LocalOneDrive ]]; then
+    if [[ -e $d1 ]]; then
+        echo "Create symlink from $d1 to $LocalOneDrive"
+    elif [[ -e $d2 ]]; then
+        echo "Creating symlink $d2 to $LocalOneDrive"
+    else
+        echo "Couldn't find OneDrive location, check possible locations"
     fi
-}
+else 
+    echo "OneDrive symlink already exists"
+fi
 
-initializeOnedriveSymlink
+
+echo ""
+echo "-----------------------"
+echo "Checking WSLtty install"
+echo "-----------------------"
+wsltty_path_windows=/mnt/c/Users/$username/AppData/Roaming/wsltty
+
+if [[ $(uname -r) =~ Microsoft$ ]]; then
+    if [[ ! -e wsltty_path_windows ]]; then
+        echo "wsltty is not installed, download standalone installer"
+    else
+        echo "Copy contents from github to wsltty location"
+    fi
+fi
+
+
+
 source ~/.bashrc
-
-#'
