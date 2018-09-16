@@ -1,0 +1,4 @@
+# To use common configuration in %APPDATA%\mintty, simply remove this file
+Font=Fira Code Retina
+Term=xterm-256color
+FontWeight=450
