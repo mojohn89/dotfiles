@@ -80,13 +80,11 @@ if [[ $(uname -r) =~ Microsoft$ ]]; then
     if [[ ! -e $wsltty_path_windows ]]; then
         echo "wsltty is not installed, download standalone installer"
     else
-        if [[ ! -e $wsltty_local_path ]]; then
-            ln -s $wsltty_path_windows $wsltty_local_path
-            echo "Created symlink from $wsltty_path_windows to $wsltty_local_path"
-        else
-            rsync -r $wsltty_local_path/ $backupdir/wsltty/
-            echo "Copy contents in $wsltty_local_path to $backupdir/wsltty"
-        fi
+        rsync -ar --delete $wsltty_path_windows/ $backupdir/wsltty/
+        echo "Backed up contents in $wsltty_local_path to $backupdir/wsltty"
+        rsync -ar --delete $wsltty_local_path/ $wsltty_path_windows/
+
+        echo "Sync contents from $dir/wsltty to $wsltty_path_windows"
     fi
 fi
 
