@@ -115,3 +115,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# X11 server display value
+export DISPLAY=localhost:0.0
