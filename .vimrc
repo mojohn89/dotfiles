@@ -3,6 +3,11 @@ let mapleader=","
 " VIM mode
 set nocompatible
 
+noremap tdd "+dd
+noremap ty "+y
+noremap tY "+Y
+noremap tp "+p
+noremap tP "+P
 " General settings
 set nohidden            " No buffer when tab is closed
 set fileencoding=utf-8	" Save files as utf-8
