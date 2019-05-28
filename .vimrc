@@ -61,8 +61,8 @@ Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'danilo-augusto/vim-afterglow'
 Plugin 'vimwiki/vimwiki'
-"Plugin 'gabrielelana/vim-markdown'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'valloric/youcompleteme'
 
 call vundle#end()
 

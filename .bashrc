@@ -2,6 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+. $HOME/aws/aws-session-tool/session-tool.sh
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
