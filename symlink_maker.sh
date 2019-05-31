@@ -44,29 +44,29 @@ else
     echo ".. And plugins are now up to date."
 fi
 
-echo ""
-echo "---------------------------"
-echo "Setting up OneDrive symlink"
-echo "---------------------------"
-get_username=$(powershell.exe '$env:UserName')
-username=${get_username//$'\r'/}
-LocalOneDrive=~/OneDrive
-d1="/mnt/c/OneDrive"
-d2="/mnt/c/Users/$username/OneDrive"
-
-if [[ ! -e $LocalOneDrive ]]; then
-    if [[ -e $d1 ]]; then
-        echo "Creating symlink from $d1 to $LocalOneDrive"
-        ln -s $d1 $LocalOneDrive
-    elif [[ -e $d2 ]]; then
-        echo "Creating symlink from $d2 to $LocalOneDrive"
-        ln -s $d2 $LocalOneDrive
-    else
-        echo "Couldn't find OneDrive location, check possible locations"
-    fi
-else 
-    echo "OneDrive symlink already exists"
-fi
+#echo ""
+#echo "---------------------------"
+#echo "Setting up OneDrive symlink"
+#echo "---------------------------"
+#get_username=$(powershell.exe '$env:UserName')
+#username=${get_username//$'\r'/}
+#LocalOneDrive=~/OneDrive
+#d1="/mnt/c/OneDrive"
+#d2="/mnt/c/Users/$username/OneDrive"
+#
+#if [[ ! -e $LocalOneDrive ]]; then
+#    if [[ -e $d1 ]]; then
+#        echo "Creating symlink from $d1 to $LocalOneDrive"
+#        ln -s $d1 $LocalOneDrive
+#    elif [[ -e $d2 ]]; then
+#        echo "Creating symlink from $d2 to $LocalOneDrive"
+#        ln -s $d2 $LocalOneDrive
+#    else
+#        echo "Couldn't find OneDrive location, check possible locations"
+#    fi
+#else 
+#    echo "OneDrive symlink already exists"
+#fi
 
 
 echo ""

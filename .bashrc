@@ -2,7 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-. $HOME/aws/aws-session-tool/session-tool.sh
+#. $HOME/aws/aws-session-tool/session-tool.sh
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -77,8 +77,8 @@ esac
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Alias definitions.
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f ~/dotfiles/.bash_aliases ]; then
+    . ~/dotfiles/.bash_aliases
 fi
 
 if [ -f ~/.ruter_aliases ]; then
