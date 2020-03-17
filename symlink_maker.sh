@@ -48,44 +48,24 @@ fi
 #echo "---------------------------"
 #echo "Setting up OneDrive symlink"
 #echo "---------------------------"
-#get_username=$(powershell.exe '$env:UserName')
-#username=${get_username//$'\r'/}
-#LocalOneDrive=~/OneDrive
-#d1="/mnt/c/OneDrive"
-#d2="/mnt/c/Users/$username/OneDrive"
-#
-#if [[ ! -e $LocalOneDrive ]]; then
-#    if [[ -e $d1 ]]; then
-#        echo "Creating symlink from $d1 to $LocalOneDrive"
-#        ln -s $d1 $LocalOneDrive
-#    elif [[ -e $d2 ]]; then
-#        echo "Creating symlink from $d2 to $LocalOneDrive"
-#        ln -s $d2 $LocalOneDrive
-#    else
-#        echo "Couldn't find OneDrive location, check possible locations"
-#    fi
-#else 
-#    echo "OneDrive symlink already exists"
-#fi
+get_username=$(powershell.exe '$env:UserName')
+username=${get_username//$'\r'/}
+LocalOneDrive=~/OneDrive
+d1="/mnt/c/OneDrive"
+d2="/mnt/c/Users/$username/OneDrive"
 
-
-echo ""
-echo "-----------------------"
-echo "Checking WSLtty install"
-echo "-----------------------"
-wsltty_path_windows=/mnt/c/Users/$username/AppData/Roaming/wsltty
-wsltty_local_path=$dir/wsltty
-
-if [[ $(uname -r) =~ Microsoft$ ]]; then
-    if [[ ! -e $wsltty_path_windows ]]; then
-        echo "wsltty is not installed, download standalone installer"
+if [[ ! -e $LocalOneDrive ]]; then
+    if [[ -e $d1 ]]; then
+        echo "Creating symlink from $d1 to $LocalOneDrive"
+        ln -s $d1 $LocalOneDrive
+    elif [[ -e $d2 ]]; then
+        echo "Creating symlink from $d2 to $LocalOneDrive"
+        ln -s $d2 $LocalOneDrive
     else
-        rsync -ar --delete $wsltty_path_windows/ $backupdir/wsltty/
-        echo "Backed up contents in $wsltty_local_path to $backupdir/wsltty"
-        rsync -ar --delete $wsltty_local_path/ $wsltty_path_windows/
-
-        echo "Sync contents from $dir/wsltty to $wsltty_path_windows"
+        echo "Couldn't find OneDrive location, check possible locations"
     fi
+else 
+    echo "OneDrive symlink already exists"
 fi
 
 source ~/.bashrc

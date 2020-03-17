@@ -60,43 +60,9 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'danilo-augusto/vim-afterglow'
-Plugin 'vimwiki/vimwiki'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'valloric/youcompleteme'
 
 call vundle#end()
-
-
-let wiki_0 = {}
-let wiki_0.path = '~/OneDrive/Notes/'
-let wiki_0.syntax = 'markdown'
-let wiki_0.ext = '.md'
-
-let wiki_1 = {}
-let wiki_1.path = '~/OneDrive/Notes/School/'
-let wiki_1.syntax = 'markdown'
-let wiki_1.ext = '.md'
-
-let wiki_2 = {}
-let wiki_2.path = '~/OneDrive/Notes/Personal/'
-let wiki_2.syntax = 'markdown'
-let wiki_2.ext = '.md'
-
-let wiki_3 = {}
-let wiki_3.path = '~/OneDrive/Notes/Knowledge/'
-let wiki_3.syntax = 'markdown'
-let wiki_3.ext = '.md'
-
-let wiki_4 = {}
-let wiki_4.path = '~/OneDrive/Notes/Work/'
-let wiki_4.syntax = 'markdown'
-let wiki_4.ext = '.md'
-
-let g:vimwiki_list = [wiki_0, wiki_1, wiki_2, wiki_3, wiki_4]
-let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-augroup pandoc_syntax
-    au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
-augroup end
 
 " PANDOC
 let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
